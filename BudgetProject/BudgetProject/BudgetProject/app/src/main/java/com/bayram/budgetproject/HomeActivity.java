@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
     public static void changeTotalPrice(){
         mTotalPrice.setText(Stuff.getTotalPriceForTheDay(mYear, mMonthOfYear, mDayOfMonth));
-
+///Adasdsadsa
     }
 
     @Override

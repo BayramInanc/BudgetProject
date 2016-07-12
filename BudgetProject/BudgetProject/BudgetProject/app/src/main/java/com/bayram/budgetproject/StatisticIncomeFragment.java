@@ -66,7 +66,8 @@ public class StatisticIncomeFragment extends Fragment {
         mPieChart.addPieSlice(new PieModel("Gıda", Category.getTotalPriceForCategoryAsPercentage("Gıda"), Color.parseColor("#558B2F")));
         mPieChart.addPieSlice(new PieModel("Giyim", Category.getTotalPriceForCategoryAsPercentage("Giyim"), Color.parseColor("#EF6C00")));
 
-
+        ///////asdasadlklkasndlkn//
+        //sdsad
         mPieChart.startAnimation();
 
         return mView;
