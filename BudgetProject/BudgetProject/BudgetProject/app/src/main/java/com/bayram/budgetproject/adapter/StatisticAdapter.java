@@ -1,8 +1,11 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.bayram.budgetproject.fragment.StatisticIncomeFragment;
+import com.bayram.budgetproject.fragment.StatisticOutcomeFragment;
 
 /**
  * Created by mac on 2.07.2016.

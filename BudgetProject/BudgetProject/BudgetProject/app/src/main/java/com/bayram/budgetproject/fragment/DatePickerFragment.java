@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -10,6 +10,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.widget.DatePicker;
+
+import com.bayram.budgetproject.interfaces.CommunicatableBetweenActivityAndFragment;
+import com.bayram.budgetproject.interfaces.CommunicatableBetweenFragment;
+import com.bayram.budgetproject.utility.Constants;
 
 /**
  * Created by Bayram-PC on 11.2.2016.

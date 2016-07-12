@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,18 +12,24 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.bayram.budgetproject.model.Category;
+import com.bayram.budgetproject.interfaces.CommunicatableBetweenActivityAndFragment;
+import com.bayram.budgetproject.utility.Constants;
+import com.bayram.budgetproject.fragment.DatePickerFragment;
+import com.bayram.budgetproject.adapter.MyRecyclierViewAdapter;
+import com.bayram.budgetproject.R;
+import com.bayram.budgetproject.model.Stuff;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-import static com.bayram.budgetproject.Stuff.getTotalPriceForTheDay;
+import static com.bayram.budgetproject.model.Stuff.getTotalPriceForTheDay;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, CommunicatableBetweenActivityAndFragment {
 
@@ -129,7 +135,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
     public static void changeTotalPrice(){
         mTotalPrice.setText(Stuff.getTotalPriceForTheDay(mYear, mMonthOfYear, mDayOfMonth));
-///Adasdsadsa
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.interfaces;
 
 /**
  * Created by Bayram-PC on 13.2.2016.

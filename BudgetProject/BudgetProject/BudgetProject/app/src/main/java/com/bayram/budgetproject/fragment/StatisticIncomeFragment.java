@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.fragment;
 
 
 import android.graphics.Color;
@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bayram.budgetproject.model.Category;
+import com.bayram.budgetproject.R;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;

@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bayram.budgetproject.R;
+import com.bayram.budgetproject.activity.HomeActivity;
+import com.bayram.budgetproject.model.Category;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;

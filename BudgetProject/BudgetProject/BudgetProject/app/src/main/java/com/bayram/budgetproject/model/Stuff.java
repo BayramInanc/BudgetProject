@@ -1,4 +1,6 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.model;
+
+import com.bayram.budgetproject.utility.Constants;
 
 import io.realm.Realm;
 import io.realm.RealmObject;

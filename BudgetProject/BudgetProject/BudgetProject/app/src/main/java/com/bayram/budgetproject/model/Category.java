@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.model;
 
 import io.realm.Realm;
 import io.realm.RealmList;

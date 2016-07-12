@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +8,18 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatSpinner;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.bayram.budgetproject.model.Category;
+import com.bayram.budgetproject.utility.Constants;
+import com.bayram.budgetproject.R;
+import com.bayram.budgetproject.model.Stuff;
+import com.bayram.budgetproject.activity.HomeActivity;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
 import io.realm.Realm;

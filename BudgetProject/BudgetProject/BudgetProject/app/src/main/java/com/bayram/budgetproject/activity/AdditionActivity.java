@@ -1,4 +1,4 @@
-package com.bayram.budgetproject;
+package com.bayram.budgetproject.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,6 +8,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
+import com.bayram.budgetproject.interfaces.CommunicatableBetweenFragment;
+import com.bayram.budgetproject.fragment.IncomeAdditionFragment;
+import com.bayram.budgetproject.fragment.OutcomeAdditionFragment;
+import com.bayram.budgetproject.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +29,10 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adding_activity);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("İŞLEM");
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setTitle("İŞLEM");
         ViewPager mViewPager = (ViewPager) findViewById(R.id.my_viewpager);
         setupViewPager(mViewPager);
         TabLayout mTabLayout = (TabLayout) findViewById(R.id.my_tablayout);
@@ -46,7 +55,6 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onPageSelected(int position) {
-        mToolbar.setTitle(mFragmentTitleList.get(position));
     }
 
     @Override
@@ -70,6 +78,16 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
 
