@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".HomeActivity">
+    <item
+        android:id="@+id/statistic_screen"
+        android:icon="@drawable/statistic"
+        app:showAsAction="always"
+        tools:ignore="AppCompatResource"
+        android:title="İstatistik" />
+</menu>

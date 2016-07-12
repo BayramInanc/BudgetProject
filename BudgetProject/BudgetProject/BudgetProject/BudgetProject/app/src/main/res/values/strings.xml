@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BudgetProject</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="category">
+        <item>Ulaşım</item>
+        <item>Sağlık</item>
+        <item>Gıda</item>
+        <item>Giyim</item>
+    </string-array>
+
+    <string-array name="subCategory">
+        <item>Benzin</item>
+        <item>Ev Kirası</item>
+        <item>Araba Vergisi</item>
+        <item>Kitap</item>
+        <item>Okul Harcamaları</item>
+        <item>Telefon Taksidi</item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+</resources>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:gravity="top"
+    android:orientation="vertical"
+    android:weightSum="20">
+
+<HorizontalScrollView
+    android:scrollbarThumbHorizontal="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <info.hoang8f.android.segmented.SegmentedGroup
+        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segmentedGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        segmentedgroup:sc_border_width="2dp"
+        segmentedgroup:sc_corner_radius="10dp">
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kira"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fatura"
+            style="@style/RadioButton" />
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ulaşım"
+            style="@style/RadioButton" />
+        <RadioButton
+            android:id="@+id/radio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sağlık"
+            style="@style/RadioButton" />
+        <RadioButton
+            android:id="@+id/radio5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gıda"
+            style="@style/RadioButton" />
+        <RadioButton
+            android:id="@+id/radio6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giyim"
+            style="@style/RadioButton" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+</HorizontalScrollView>
+
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/date_button"
+        android:layout_width="match_parent"
+        android:text="Tarih Seçiniz"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/my_margin"
+        android:layout_marginRight="@dimen/my_margin"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/date_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/my_margin"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/my_margin"
+        android:layout_weight="2"
+        android:background="@drawable/edit_text_style" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/explanation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/my_margin"
+            android:layout_marginRight="@dimen/my_margin"
+            android:background="@drawable/edit_text_style"
+            android:gravity="center"
+            android:hint="Açıklama" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/shortNote"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.3">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/my_margin"
+            android:layout_marginRight="@dimen/my_margin"
+            android:background="@drawable/edit_text_style"
+            android:gravity="center"
+            android:hint="Kısa Not" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <android.support.v7.widget.AppCompatEditText
+
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/my_margin"
+            android:layout_marginRight="@dimen/my_margin"
+            android:layout_weight="2"
+            android:background="@drawable/edit_text_style"
+            android:gravity="center"
+            android:hint="Tutar"
+            android:inputType="number" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.ButtonBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/cancel"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_weight="2"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@android:string/cancel" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_weight="2"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@android:string/ok" />
+
+
+    </android.support.v7.widget.ButtonBarLayout>
+
+</LinearLayout>
+
+
+
+
