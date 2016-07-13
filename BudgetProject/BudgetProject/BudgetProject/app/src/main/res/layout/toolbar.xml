@@ -5,7 +5,6 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     app:titleTextColor="@color/white"
-    app:layout_scrollFlags="scroll|snap|enterAlways"
     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 

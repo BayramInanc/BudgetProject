@@ -28,7 +28,6 @@ import com.bayram.budgetproject.activity.AdditionActivity;
 import com.bayram.budgetproject.activity.HomeActivity;
 import com.bayram.budgetproject.activity.StatisticActivity;
 import com.bayram.budgetproject.adapter.HomeRecyclierViewAdapter;
-import com.bayram.budgetproject.interfaces.CommunicatableBetweenActivityAndFragment;
 import com.bayram.budgetproject.model.Category;
 import com.bayram.budgetproject.model.Stuff;
 import com.bayram.budgetproject.utility.Constants;
@@ -43,7 +42,7 @@ import static com.bayram.budgetproject.model.Stuff.getTotalPriceForTheDay;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener, HomeRecyclierViewAdapter.OnCardClickCallback, CommunicatableBetweenActivityAndFragment {
+public class HomeFragment extends Fragment implements View.OnClickListener, HomeRecyclierViewAdapter.OnCardClickCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static RecyclerView mRecyclerView;
@@ -174,8 +173,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     }
 
 
-    @Override
+
     public void changeDisplayingHome(int year, int monthOfYear, int dayOfMonth) {
+        Realm mRealmDatabase = Realm.getDefaultInstance();
         RealmResults<Category> realmResults = mRealmDatabase.where(Category.class).equalTo("mStuff." + Constants.STRING_DAY, dayOfMonth).equalTo("mStuff." + Constants.STRING_MONTH, monthOfYear).equalTo("mStuff." + Constants.STRING_YEAR, year).findAll();
         mDayOfMonth = dayOfMonth;
         mYear = year;
@@ -202,5 +202,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mFragmentTransaction.replace(R.id.container, DetailScreenFragment.newInstance());
         mFragmentTransaction.commit();
         ((HomeActivity) mContext).mToolbar.setTitle("DETAY EKRANI");
+
+    }
+    public interface CommunicatableBetweenHomeFragmentAndDataPickerFragment{
+        void changeDisplayingHome(int year, int monthOfYear, int dayOfMonth);
     }
 }

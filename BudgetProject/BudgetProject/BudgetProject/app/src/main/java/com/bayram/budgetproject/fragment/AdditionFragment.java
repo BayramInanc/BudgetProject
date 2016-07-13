@@ -27,7 +27,7 @@ import io.realm.Realm;
 /**
  * Created by Bayram-PC on 28.2.2016.
  */
-public class AdditionFragment extends Fragment implements View.OnClickListener,RadioGroup.OnCheckedChangeListener {
+public class AdditionFragment extends Fragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     TextInputLayout explanationTextInputLayout;
     TextInputLayout shortNoteTextInputLayout;
@@ -71,18 +71,11 @@ public class AdditionFragment extends Fragment implements View.OnClickListener,R
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment IncomeAdditionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static IncomeAdditionFragment newInstance(String param1, String param2) {
-        IncomeAdditionFragment fragment = new IncomeAdditionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static AdditionFragment newInstance() {
+        return new AdditionFragment();
     }
 
     @Override
@@ -114,7 +107,10 @@ public class AdditionFragment extends Fragment implements View.OnClickListener,R
             case R.id.date_button:
                 Log.d("bayram", "Onclick R.id.date_button ye girdik");
                 mDatePickerFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
+                Toast.makeText(getActivity(), "Click Tıklandı!", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.cancel:
+                getActivity().finish();
             case R.id.ok:
                 SharedPreferences mSharedPreferences = getActivity().getSharedPreferences("key", Context.MODE_PRIVATE);
                 SharedPreferences.Editor mEditor = mSharedPreferences.edit();
@@ -163,7 +159,7 @@ public class AdditionFragment extends Fragment implements View.OnClickListener,R
                             Category mCategory = mRealmDatabase.createObject(Category.class);
                             mCategory.setCategoryName(category);
                             mCategory.setId(Category.getId());
-                            Toast.makeText(getContext(), "category id "+ String.valueOf(Category.getId()-1), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "category id " + String.valueOf(Category.getId() - 1), Toast.LENGTH_SHORT).show();
 
                             Stuff mStuff = mRealmDatabase.createObject(Stuff.class);
                             if (isOutcome) {
@@ -196,10 +192,9 @@ public class AdditionFragment extends Fragment implements View.OnClickListener,R
     }
 
 
-
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int id) {
-        switch (id){
+        switch (id) {
             case R.id.radio1:
                 category = "Kira";
                 break;
@@ -222,5 +217,20 @@ public class AdditionFragment extends Fragment implements View.OnClickListener,R
                 break;
 
         }
+    }
+
+    public void sendData(int year, int monthOfYear, int dayOfMonth, int whichButton){
+        if(whichButton==0){
+            IncomeAdditionFragment mIncomeAdditionFragment = (IncomeAdditionFragment) IncomeAdditionFragment.newInstance();
+            mIncomeAdditionFragment.changeTextView(year,monthOfYear,dayOfMonth);
+        }
+        else if(whichButton==1){
+            OutcomeAdditionFragment mOutcomeAdditionFragment = (OutcomeAdditionFragment) OutcomeAdditionFragment.newInstance();
+            mOutcomeAdditionFragment.changeTextView(year,monthOfYear,dayOfMonth);
+        }
+    }
+
+    public interface CommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment {
+        void sendData(int year, int monthOfYear, int dayOfMonth, int whichButton);
     }
 }

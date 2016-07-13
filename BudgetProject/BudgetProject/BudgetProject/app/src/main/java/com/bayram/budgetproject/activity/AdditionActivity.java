@@ -2,24 +2,18 @@ package com.bayram.budgetproject.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.bayram.budgetproject.adapter.AdditionAdapter;
-import com.bayram.budgetproject.interfaces.CommunicatableBetweenFragment;
+import com.bayram.budgetproject.fragment.AdditionFragment;
 import com.bayram.budgetproject.fragment.IncomeAdditionFragment;
 import com.bayram.budgetproject.fragment.OutcomeAdditionFragment;
 import com.bayram.budgetproject.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class AdditionActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, CommunicatableBetweenFragment {
+public class AdditionActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, AdditionFragment.CommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment {
     Toolbar mToolbar;
 
 
@@ -64,8 +58,8 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
     @Override
     public void sendData(int year, int monthOfYear, int dayOfMonth, int whichButton) {
         if (whichButton == 0) {
-            IncomeAdditionFragment mIncomeFragment = new IncomeAdditionFragment();
-            mIncomeFragment.changeTextView(year, monthOfYear, dayOfMonth);
+            IncomeAdditionFragment mIncomeAdditionFragment = new IncomeAdditionFragment();
+            mIncomeAdditionFragment.changeTextView(year, monthOfYear, dayOfMonth);
 
         } else if (whichButton == 1) {
             OutcomeAdditionFragment mOutcomeFragment = new OutcomeAdditionFragment();

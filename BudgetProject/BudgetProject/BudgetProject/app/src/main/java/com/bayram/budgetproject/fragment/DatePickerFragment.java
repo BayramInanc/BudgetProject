@@ -11,8 +11,6 @@ import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.widget.DatePicker;
 
-import com.bayram.budgetproject.interfaces.CommunicatableBetweenActivityAndFragment;
-import com.bayram.budgetproject.interfaces.CommunicatableBetweenFragment;
 import com.bayram.budgetproject.utility.Constants;
 
 /**
@@ -23,8 +21,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     private static int month = Constants.THIS_MONTH;
     private static int day = Constants.TODAY;
     public  int whichButton = -1;
-    CommunicatableBetweenFragment mCommunicatableBetweenActivities;
-    CommunicatableBetweenActivityAndFragment mCommunicatableBetweenActivityAndFragment;
+    private HomeFragment.CommunicatableBetweenHomeFragmentAndDataPickerFragment mCommunicatableBetweenHomeFragmentAndDataPickerFragment;
+    private AdditionFragment.CommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment mCommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment;
 
     public int getMonth() {
 
@@ -102,13 +100,13 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Log.d("bayram", "DatePickerFragment onActivityCreated metodundayız.");
-        if (getActivity() instanceof CommunicatableBetweenFragment) {
-            mCommunicatableBetweenActivities = (CommunicatableBetweenFragment) getActivity();
+        if (getActivity() instanceof HomeFragment.CommunicatableBetweenHomeFragmentAndDataPickerFragment) {
+            mCommunicatableBetweenHomeFragmentAndDataPickerFragment = (HomeFragment.CommunicatableBetweenHomeFragmentAndDataPickerFragment) getActivity();
             Log.d("bayram", "DatePickerFragment OnactivityCreated if (getActivity() instanceof CommunicatableBetweenFragment)'li kısımdayız! ");
 
-        } else if (getActivity() instanceof CommunicatableBetweenActivityAndFragment) {
+        } else if (getActivity() instanceof AdditionFragment.CommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment) {
 
-            mCommunicatableBetweenActivityAndFragment = (CommunicatableBetweenActivityAndFragment) getActivity();
+            mCommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment = (AdditionFragment.CommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment) getActivity();
             Log.d("bayram", "DatePickerFragment OnactivityCreatedelse if (getActivity() instanceof CommunicatableBetweenActivityAndFragment)'li kısımdayız! ");
 
         }
@@ -130,12 +128,12 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
             setMonth(monthOfYear + 1);
             setYear(year);
             Log.d("bayram", "DatePickerFragment OndateSet if (whichButton == 0 || whichButton == 1)'li koşuldayız!");
-            mCommunicatableBetweenActivities.sendData(year, monthOfYear + 1, dayOfMonth, whichButton);
+            mCommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment.sendData(year, monthOfYear + 1, dayOfMonth, whichButton);
 
         }
         //WE use this else part for displaying income-outcome in home activity.
         else if (whichButton == -1) {
-            mCommunicatableBetweenActivityAndFragment.changeDisplayingHome(year, monthOfYear + 1, dayOfMonth);
+            mCommunicatableBetweenHomeFragmentAndDataPickerFragment.changeDisplayingHome(year, monthOfYear + 1, dayOfMonth);
             Log.d("bayram", "DatePickerFragment OndateSet else if(whichButton==-1) 'li koşuldayız!");
 
         }

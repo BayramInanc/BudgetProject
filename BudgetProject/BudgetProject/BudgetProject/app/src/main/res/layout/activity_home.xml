@@ -1,15 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_bar"
+        android:theme="@style/AppTheme.PopupOverlay">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+           />
+
+    </android.support.design.widget.AppBarLayout>
+    <FrameLayout
+        android:paddingTop="?attr/actionBarSize"
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </FrameLayout>
-</LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -40,18 +40,6 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
         this.mRealmResults = realmResults;
         this.mContext = context;
         mCallback = callback;
-        Log.d("bayram", "Recyclierview adampter constructor\n");
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

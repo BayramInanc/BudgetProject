@@ -1,13 +1,18 @@
 package com.bayram.budgetproject.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bayram.budgetproject.R;
+import com.bayram.budgetproject.activity.HomeActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,9 +22,15 @@ import com.bayram.budgetproject.R;
 public class DetailScreenFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
+private Context mContext;
     // TODO: Rename and change types of parameters
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
 
     public DetailScreenFragment() {
         // Required empty public constructor
@@ -46,7 +57,9 @@ public class DetailScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ((HomeActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return inflater.inflate(R.layout.fragment_detail_screen, container, false);
     }
+
 
 }
