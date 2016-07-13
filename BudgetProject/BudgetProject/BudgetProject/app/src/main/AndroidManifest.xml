@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AdditionActivity" />
-        <activity android:name=".activity.StatisticActivity"></activity>
+        <activity android:name=".activity.StatisticActivity" />
     </application>
 
 </manifest>

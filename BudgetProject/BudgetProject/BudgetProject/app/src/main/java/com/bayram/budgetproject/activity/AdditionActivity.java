@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.bayram.budgetproject.adapter.AdditionAdapter;
 import com.bayram.budgetproject.interfaces.CommunicatableBetweenFragment;
 import com.bayram.budgetproject.fragment.IncomeAdditionFragment;
 import com.bayram.budgetproject.fragment.OutcomeAdditionFragment;
@@ -20,8 +21,6 @@ import java.util.List;
 
 public class AdditionActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, CommunicatableBetweenFragment {
     Toolbar mToolbar;
-    public List<Fragment> mFragmentList = new ArrayList<>();
-    public List<String> mFragmentTitleList = new ArrayList<>();
 
 
     @Override
@@ -32,7 +31,6 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
         mToolbar.setTitle("İŞLEM");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mToolbar.setTitle("İŞLEM");
         ViewPager mViewPager = (ViewPager) findViewById(R.id.my_viewpager);
         setupViewPager(mViewPager);
         TabLayout mTabLayout = (TabLayout) findViewById(R.id.my_tablayout);
@@ -41,10 +39,10 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
     }
 
     private void setupViewPager(ViewPager mViewPager) {
-        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
-        myViewPagerAdapter.addFragment(new IncomeAdditionFragment(), "GELİR");
-        myViewPagerAdapter.addFragment(new OutcomeAdditionFragment(), "GİDER");
-        mViewPager.setAdapter(myViewPagerAdapter);
+        AdditionAdapter mAdditionAdapter = new AdditionAdapter(getSupportFragmentManager());
+        mAdditionAdapter.addFragment(new IncomeAdditionFragment(), "GELİR");
+        mAdditionAdapter.addFragment(new OutcomeAdditionFragment(), "GİDER");
+        mViewPager.setAdapter(mAdditionAdapter);
     }
 
     @Override
@@ -89,33 +87,6 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
         return super.onOptionsItemSelected(item);
     }
 
-    public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
 
-
-        public MyViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
 
 }
