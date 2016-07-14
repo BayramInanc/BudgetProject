@@ -20,7 +20,7 @@ public class AdditionActivity extends AppCompatActivity implements ViewPager.OnP
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adding_activity);
+        setContentView(R.layout.activity_addition);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("İŞLEM");
         setSupportActionBar(mToolbar);

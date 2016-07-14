@@ -94,7 +94,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         mRealmDatabase = Realm.getDefaultInstance();
         ImageButton mImageButton = (ImageButton) mView.findViewById(R.id.calendar_image_button);
         mImageButton.setOnClickListener(this);
-//        CoordinatorLayout mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerView = (RecyclerView) mView.findViewById(R.id.my_recycler_view);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -103,7 +102,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         setHasOptionsMenu(true);
         mTotalPrice = (AppCompatTextView) mView.findViewById(R.id.total_price);
         mTotalPrice.setText(getTotalPriceForTheDay(Constants.THIS_YEAR, Constants.THIS_MONTH, Constants.TODAY));
-
+        ((HomeActivity) mContext).setTitle("BÜTÇE DENGESİ");
+        ((HomeActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         myRecyclierViewAdapter = new HomeRecyclierViewAdapter(mRealmResults, getActivity(), this);
         mRecyclerView.setAdapter(myRecyclierViewAdapter);
 
@@ -144,13 +144,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         int id = item.getItemId();
         if (id == R.id.statistic_screen) {
             Intent mIntent = new Intent(getActivity(), StatisticActivity.class);
-
             startActivity(mIntent);
         }
-
-
-        //noinspection SimplifiableIfStatement
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -171,7 +166,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public static void changeTotalPrice() {
         mTotalPrice.setText(Stuff.getTotalPriceForTheDay(mYear, mMonthOfYear, mDayOfMonth));
     }
-
 
 
     public void changeDisplayingHome(int year, int monthOfYear, int dayOfMonth) {
@@ -200,11 +194,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         FragmentManager mFragmentManager = ((HomeActivity) mContext).getSupportFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.container, DetailScreenFragment.newInstance());
+        mFragmentTransaction.addToBackStack("DetailScreen");
         mFragmentTransaction.commit();
         ((HomeActivity) mContext).mToolbar.setTitle("DETAY EKRANI");
 
     }
-    public interface CommunicatableBetweenHomeFragmentAndDataPickerFragment{
+
+    public interface CommunicatableBetweenHomeFragmentAndDataPickerFragment {
         void changeDisplayingHome(int year, int monthOfYear, int dayOfMonth);
     }
+
 }

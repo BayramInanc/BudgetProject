@@ -5,9 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -58,6 +55,7 @@ private Context mContext;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ((HomeActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         return inflater.inflate(R.layout.fragment_detail_screen, container, false);
     }
 

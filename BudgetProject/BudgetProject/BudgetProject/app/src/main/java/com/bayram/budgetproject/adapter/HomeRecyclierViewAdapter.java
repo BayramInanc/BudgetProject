@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +45,7 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
     @Override
     public HomeRecyclierViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
-                from(parent.getContext()).inflate(R.layout.row_item, parent, false);
+                from(parent.getContext()).inflate(R.layout.cardview_item, parent, false);
 
         return new MyViewHolder(itemView);
     }
