@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.bayram.budgetproject.R;
 import com.bayram.budgetproject.fragment.HomeFragment;
 import com.bayram.budgetproject.model.Category;
+import com.bayram.budgetproject.model.IncomeAdditionType;
+import com.bayram.budgetproject.model.OutcomeAdditionType;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -35,6 +37,7 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
     Context mContext;
 
     private OnCardClickCallback mCallback;
+
     public HomeRecyclierViewAdapter(RealmResults<Category> realmResults, Context context, OnCardClickCallback callback) {
         this.mRealmResults = realmResults;
         this.mContext = context;
@@ -69,7 +72,6 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
     }
 
 
-
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public MyViewHolder(View itemView) {
@@ -87,12 +89,15 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
 
         @Override
         public void onClick(View v) {
-            if(v.getId()==R.id.my_card_view){
+
+            if (v.getId() == R.id.my_card_view) {
                 mCallback.onCardClicked(getAdapterPosition());
-            }
-            else{
+            } else {
                 PopupMenu mPopup = new PopupMenu(mContext, v);
                 mRealm = Realm.getDefaultInstance();
+                final RealmResults<IncomeAdditionType> mIncomeAdditionRealmResults = mRealm.where(IncomeAdditionType.class).findAll();
+                final RealmResults<OutcomeAdditionType> mOutcomeAdditionRealmResults = mRealm.where(OutcomeAdditionType.class).findAll();
+
                 mRealm.addChangeListener(new RealmChangeListener<Realm>() {
                     @Override
                     public void onChange(Realm element) {
@@ -112,7 +117,14 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
                                     @Override
                                     public void execute(Realm realm) {
                                         mRealmResults.get(getAdapterPosition()).getmStuff().deleteFromRealm(0);
-                                        mRealmResults.deleteFromRealm(getAdapterPosition());
+
+                                        if (mRealmResults.get(getAdapterPosition()).isIncome()) {
+                                            mRealmResults.deleteFromRealm(getAdapterPosition());
+                                            mIncomeAdditionRealmResults.deleteFromRealm(getAdapterPosition());
+                                        } else {
+                                            mRealmResults.deleteFromRealm(getAdapterPosition());
+                                            mOutcomeAdditionRealmResults.deleteFromRealm(getAdapterPosition());
+                                        }
 
                                     }
                                 });
@@ -128,7 +140,8 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
 
         }
     }
-    public interface OnCardClickCallback{
+
+    public interface OnCardClickCallback {
         void onCardClicked(int position);
     }
 }

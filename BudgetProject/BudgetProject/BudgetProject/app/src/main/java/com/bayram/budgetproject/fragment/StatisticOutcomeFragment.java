@@ -1,6 +1,7 @@
 package com.bayram.budgetproject.fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bayram.budgetproject.R;
+import com.bayram.budgetproject.model.OutcomeAdditionType;
+
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
 
 
 /**
@@ -30,7 +35,6 @@ public class StatisticOutcomeFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-
      * @return A new instance of fragment StatisticOutcomeFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -50,7 +54,22 @@ public class StatisticOutcomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistic_outcome, container, false);
+        View mView = inflater.inflate(R.layout.fragment_statistic_income, container, false);
+
+        PieChart mPieChart = (PieChart) mView.findViewById(R.id.piechart);
+
+        mPieChart.addPieSlice(new PieModel("Kira", OutcomeAdditionType.getTotalPriceForCategoryAsPercentage("Kira"), Color.parseColor("#C62828")));
+        mPieChart.addPieSlice(new PieModel("Fatura", OutcomeAdditionType.getTotalPriceForCategoryAsPercentage("Fatura"), Color.parseColor("#C6FF00")));
+        mPieChart.addPieSlice(new PieModel("Ulaşım", OutcomeAdditionType.getTotalPriceForCategoryAsPercentage("Ulaşım"), Color.parseColor("#4527A0")));
+        mPieChart.addPieSlice(new PieModel("Sağlık", OutcomeAdditionType.getTotalPriceForCategoryAsPercentage("Sağlık"), Color.parseColor("#FF6F00")));
+        mPieChart.addPieSlice(new PieModel("Gıda", OutcomeAdditionType.getTotalPriceForCategoryAsPercentage("Gıda"), Color.parseColor("#558B2F")));
+        mPieChart.addPieSlice(new PieModel("Giyim", OutcomeAdditionType.getTotalPriceForCategoryAsPercentage("Giyim"), Color.parseColor("#EF6C00")));
+
+        ///////asdasadlklkasndlkn//
+        //sdsad
+        mPieChart.startAnimation();
+
+        return mView;
     }
 
 }

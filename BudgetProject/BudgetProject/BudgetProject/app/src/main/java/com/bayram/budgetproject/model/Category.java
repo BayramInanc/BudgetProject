@@ -12,9 +12,11 @@ import io.realm.annotations.PrimaryKey;
 
 public class Category extends RealmObject {
     @PrimaryKey
-    private long id;
+    private int id = 0;
     private String categoryName;
     private RealmList<Stuff> mStuff;
+    private boolean isIncome = false;
+    private boolean isOutcome = false;
 
     public Category() {
     }
@@ -23,13 +25,13 @@ public class Category extends RealmObject {
         return mStuff;
     }
 
-    public static long getId() {
+    public static int getId() {
         Realm mRealm = Realm.getDefaultInstance();
         RealmResults<Category> mRealmResults = mRealm.where(Category.class).findAll();
         return mRealmResults.max("id").intValue() + 1;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,21 +44,19 @@ public class Category extends RealmObject {
         this.categoryName = categoryName;
     }
 
-
-    public static float getTotalPriceForCategoryAsPercentage(String categoryName) {
-        Realm mRealm = Realm.getDefaultInstance();
-        RealmResults<Category> mRealmResults1 = mRealm.where(Category.class).equalTo("categoryName", categoryName).findAll();
-        RealmResults<Category> mRealmResults2 = mRealm.where(Category.class).findAll();
-        float sum1 = 0;
-        for (int i = 0; i < mRealmResults1.size(); i++) {
-            sum1 += mRealmResults1.get(i).getmStuff().get(0).getPrice();
+    public void setType(int type) {
+        if(type==0){
+            isIncome = true;
+        }else{
+            isOutcome = true;
         }
-
-       float sum2 = 0;
-        for (int i = 0; i < mRealmResults2.size(); i++) {
-            sum2 += mRealmResults2.get(i).getmStuff().get(0).getPrice();
-        }
-        return (sum1 /sum2) * 100;
-
     }
+    public boolean isIncome(){
+        return isIncome;
+    }
+    public boolean isOutcome(){
+        return isOutcome;
+    }
+
+
 }

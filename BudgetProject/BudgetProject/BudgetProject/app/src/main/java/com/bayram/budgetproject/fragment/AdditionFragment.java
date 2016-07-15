@@ -15,11 +15,13 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.bayram.budgetproject.model.Category;
-import com.bayram.budgetproject.utility.Constants;
 import com.bayram.budgetproject.R;
-import com.bayram.budgetproject.model.Stuff;
 import com.bayram.budgetproject.activity.HomeActivity;
+import com.bayram.budgetproject.model.Category;
+import com.bayram.budgetproject.model.IncomeAdditionType;
+import com.bayram.budgetproject.model.OutcomeAdditionType;
+import com.bayram.budgetproject.model.Stuff;
+import com.bayram.budgetproject.utility.Constants;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
 import io.realm.Realm;
@@ -130,6 +132,7 @@ public class AdditionFragment extends Fragment implements View.OnClickListener, 
                         public void execute(Realm realm) {
 
                             int price2 = Integer.parseInt(price);
+
                             Category mCategory = mRealmDatabase.createObject(Category.class);
                             mCategory.setId(Category.getId());
                             mCategory.setCategoryName(category);
@@ -147,12 +150,23 @@ public class AdditionFragment extends Fragment implements View.OnClickListener, 
                             mStuff.setYear(mDatePickerFragment.getYear());
                             mCategory.getmStuff().add(mStuff);
 
+                            if (isOutcome) {
+                                OutcomeAdditionType mOutcomeAdditionType = mRealmDatabase.createObject(OutcomeAdditionType.class);
+                                mOutcomeAdditionType.setId(OutcomeAdditionType.getId());
+                                mOutcomeAdditionType.getmCategory().add(mCategory);
+                            } else {
+                                IncomeAdditionType mIncomeAdditionType = mRealmDatabase.createObject(IncomeAdditionType.class);
+                                mIncomeAdditionType.setId(IncomeAdditionType.getId());
+                                mIncomeAdditionType.getmCategory().add(mCategory);
+                            }
+
                         }
                     });
                     mEditor.putBoolean("pressed", false);
                     mEditor.apply();
                 } else {
                     mRealmDatabase.executeTransaction(new Realm.Transaction() {
+
                         @Override
                         public void execute(Realm realm) {
                             int price2 = Integer.valueOf(price);
@@ -172,8 +186,20 @@ public class AdditionFragment extends Fragment implements View.OnClickListener, 
                             mStuff.setDay(Constants.TODAY);
                             mStuff.setMonth(Constants.THIS_MONTH);
                             mStuff.setYear(Constants.THIS_YEAR);
-                            mCategory.getmStuff().add(mStuff);
 
+                            if (isOutcome) {
+                                mCategory.setType(1);
+                                mCategory.getmStuff().add(mStuff);
+                                OutcomeAdditionType mOutcomeAdditionType = mRealmDatabase.createObject(OutcomeAdditionType.class);
+                                mOutcomeAdditionType.setId(OutcomeAdditionType.getId());
+                                mOutcomeAdditionType.getmCategory().add(mCategory);
+                            } else {
+                                mCategory.setType(0);
+                                mCategory.getmStuff().add(mStuff);
+                                IncomeAdditionType mIncomeAdditionType = mRealmDatabase.createObject(IncomeAdditionType.class);
+                                mIncomeAdditionType.setId(IncomeAdditionType.getId());
+                                mIncomeAdditionType.getmCategory().add(mCategory);
+                            }
 
                         }
                     });
@@ -219,14 +245,13 @@ public class AdditionFragment extends Fragment implements View.OnClickListener, 
         }
     }
 
-    public void sendData(int year, int monthOfYear, int dayOfMonth, int whichButton){
-        if(whichButton==0){
+    public void sendData(int year, int monthOfYear, int dayOfMonth, int whichButton) {
+        if (whichButton == 0) {
             IncomeAdditionFragment mIncomeAdditionFragment = (IncomeAdditionFragment) IncomeAdditionFragment.newInstance();
-            mIncomeAdditionFragment.changeTextView(year,monthOfYear,dayOfMonth);
-        }
-        else if(whichButton==1){
+            mIncomeAdditionFragment.changeTextView(year, monthOfYear, dayOfMonth);
+        } else if (whichButton == 1) {
             OutcomeAdditionFragment mOutcomeAdditionFragment = (OutcomeAdditionFragment) OutcomeAdditionFragment.newInstance();
-            mOutcomeAdditionFragment.changeTextView(year,monthOfYear,dayOfMonth);
+            mOutcomeAdditionFragment.changeTextView(year, monthOfYear, dayOfMonth);
         }
     }
 
