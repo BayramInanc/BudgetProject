@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.bayram.budgetproject.R;
 import com.bayram.budgetproject.fragment.HomeFragment;
 import com.bayram.budgetproject.model.Category;
-import com.bayram.budgetproject.model.IncomeAdditionType;
-import com.bayram.budgetproject.model.OutcomeAdditionType;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -95,8 +93,6 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
             } else {
                 PopupMenu mPopup = new PopupMenu(mContext, v);
                 mRealm = Realm.getDefaultInstance();
-                final RealmResults<IncomeAdditionType> mIncomeAdditionRealmResults = mRealm.where(IncomeAdditionType.class).findAll();
-                final RealmResults<OutcomeAdditionType> mOutcomeAdditionRealmResults = mRealm.where(OutcomeAdditionType.class).findAll();
 
                 mRealm.addChangeListener(new RealmChangeListener<Realm>() {
                     @Override
@@ -110,6 +106,7 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
                 mPopup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+
                         switch (item.getItemId()) {
                             case R.id.menu_delete:
                                 Toast.makeText(mContext, "position is " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
@@ -117,14 +114,7 @@ public class HomeRecyclierViewAdapter extends RecyclerView.Adapter<HomeRecyclier
                                     @Override
                                     public void execute(Realm realm) {
                                         mRealmResults.get(getAdapterPosition()).getmStuff().deleteFromRealm(0);
-
-                                        if (mRealmResults.get(getAdapterPosition()).isIncome()) {
-                                            mRealmResults.deleteFromRealm(getAdapterPosition());
-                                            mIncomeAdditionRealmResults.deleteFromRealm(getAdapterPosition());
-                                        } else {
-                                            mRealmResults.deleteFromRealm(getAdapterPosition());
-                                            mOutcomeAdditionRealmResults.deleteFromRealm(getAdapterPosition());
-                                        }
+                                        mRealmResults.deleteFromRealm(getAdapterPosition());
 
                                     }
                                 });

@@ -18,8 +18,6 @@ import android.widget.Toast;
 import com.bayram.budgetproject.R;
 import com.bayram.budgetproject.activity.HomeActivity;
 import com.bayram.budgetproject.model.Category;
-import com.bayram.budgetproject.model.IncomeAdditionType;
-import com.bayram.budgetproject.model.OutcomeAdditionType;
 import com.bayram.budgetproject.model.Stuff;
 import com.bayram.budgetproject.utility.Constants;
 
@@ -151,13 +149,9 @@ public class AdditionFragment extends Fragment implements View.OnClickListener, 
                             mCategory.getmStuff().add(mStuff);
 
                             if (isOutcome) {
-                                OutcomeAdditionType mOutcomeAdditionType = mRealmDatabase.createObject(OutcomeAdditionType.class);
-                                mOutcomeAdditionType.setId(OutcomeAdditionType.getId());
-                                mOutcomeAdditionType.getmCategory().add(mCategory);
+                                mCategory.setType(1);
                             } else {
-                                IncomeAdditionType mIncomeAdditionType = mRealmDatabase.createObject(IncomeAdditionType.class);
-                                mIncomeAdditionType.setId(IncomeAdditionType.getId());
-                                mIncomeAdditionType.getmCategory().add(mCategory);
+                                mCategory.setType(0);
                             }
 
                         }
@@ -186,19 +180,14 @@ public class AdditionFragment extends Fragment implements View.OnClickListener, 
                             mStuff.setDay(Constants.TODAY);
                             mStuff.setMonth(Constants.THIS_MONTH);
                             mStuff.setYear(Constants.THIS_YEAR);
+                            mCategory.getmStuff().add(mStuff);
 
                             if (isOutcome) {
                                 mCategory.setType(1);
-                                mCategory.getmStuff().add(mStuff);
-                                OutcomeAdditionType mOutcomeAdditionType = mRealmDatabase.createObject(OutcomeAdditionType.class);
-                                mOutcomeAdditionType.setId(OutcomeAdditionType.getId());
-                                mOutcomeAdditionType.getmCategory().add(mCategory);
+
                             } else {
                                 mCategory.setType(0);
-                                mCategory.getmStuff().add(mStuff);
-                                IncomeAdditionType mIncomeAdditionType = mRealmDatabase.createObject(IncomeAdditionType.class);
-                                mIncomeAdditionType.setId(IncomeAdditionType.getId());
-                                mIncomeAdditionType.getmCategory().add(mCategory);
+
                             }
 
                         }

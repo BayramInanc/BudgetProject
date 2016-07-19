@@ -32,6 +32,7 @@ import com.bayram.budgetproject.model.Category;
 import com.bayram.budgetproject.model.Stuff;
 import com.bayram.budgetproject.utility.Constants;
 
+import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -91,6 +92,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mView = inflater.inflate(R.layout.fragment_home, container, false);
+        ButterKnife.bind(this,mView);
         mRealmDatabase = Realm.getDefaultInstance();
         ImageButton mImageButton = (ImageButton) mView.findViewById(R.id.calendar_image_button);
         mImageButton.setOnClickListener(this);

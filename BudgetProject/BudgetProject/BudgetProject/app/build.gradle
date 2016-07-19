@@ -34,5 +34,6 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.blackfizz:eazegraph:1.2.0@aar'
     compile 'info.hoang8f:android-segmented:1.0.6'
+    compile 'com.jakewharton:butterknife:8.2.1'
     testCompile 'junit:junit:4.12'
 }

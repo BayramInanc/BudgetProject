@@ -33,16 +33,13 @@ public class IncomeAdditionFragment extends AdditionFragment {
         okButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
 
-
     }
 
 
     @Override
     public void onClick(View v) {
-
         DatePickerFragment mDatePickerFragment = DatePickerFragment.newInstance(0);
         mOnClick(mDatePickerFragment, v, false);
-
 
     }
 

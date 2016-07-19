@@ -12,6 +12,8 @@ import com.bayram.budgetproject.fragment.AdditionFragment;
 import com.bayram.budgetproject.fragment.HomeFragment;
 import com.bayram.budgetproject.utility.Constants;
 
+import butterknife.ButterKnife;
+
 public class HomeActivity extends AppCompatActivity implements HomeFragment.CommunicatableBetweenHomeFragmentAndDataPickerFragment, AdditionFragment.CommunicatableBetweenIncomeAndOutcomeFragmentWithDataPickerFragment {
 
     public Toolbar mToolbar;
@@ -19,10 +21,13 @@ public class HomeActivity extends AppCompatActivity implements HomeFragment.Comm
     private static int mMonthOfYear = Constants.THIS_MONTH;
     private static int mDayOfMonth = Constants.TODAY;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView( R.layout.activity_home);
+        ButterKnife.bind(this);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
