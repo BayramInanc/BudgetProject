@@ -23,75 +23,133 @@
             app:tabMode="fixed" />
     </android.support.design.widget.AppBarLayout>
 
-    <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/segmentedGroup"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:orientation="horizontal"
-        android:weightSum="6"
-        segmentedgroup:sc_border_width="2dp"
-        segmentedgroup:sc_corner_radius="10dp">
+        android:weightSum="10">
 
-        <RadioButton
-            android:id="@+id/radio_month"
-            style="@style/RadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="AY" />
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingRight="3dp"
+            android:text="AY SEÇ"
+            android:id="@+id/appCompatTextView2" />
 
-        <RadioButton
-            android:id="@+id/radio_year"
-            style="@style/RadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="YIL" />
+        <com.github.lguipeng.library.animcheckbox.AnimCheckBox
+
+            android:id="@+id/checkbox_month"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:layout_weight="2"
+            android:tag="AY"
+            app:circle_color="#1976D2"
+            app:stroke_color="#2196F3"
+            app:stroke_width="4dp" />
 
 
-    </info.hoang8f.android.segmented.SegmentedGroup>
-    <LinearLayout
-        android:weightSum="4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.AppCompatSpinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner_month"
-            android:layout_weight="2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp"
 
-        </android.support.v7.widget.AppCompatSpinner>
-        <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/spinner_year"
-            android:layout_weight="2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_weight="6" />
 
-        </android.support.v7.widget.AppCompatSpinner>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textView_month"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="AY SEÇ"
+            android:visibility="invisible" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="6">
+        android:orientation="horizontal"
+        android:weightSum="10">
 
-        <LinearLayout
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="YIL SEÇ" />
+
+        <com.github.lguipeng.library.animcheckbox.AnimCheckBox
+            android:id="@+id/checkbox_year"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/textView_selected_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                />
-        </LinearLayout>
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:layout_weight="2"
+            android:tag="yıl"
+            app:circle_color="#1976D2"
+            app:stroke_color="#2196F3"
+            app:stroke_width="4dp" />
 
 
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner_year"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="6" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textView_year"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="AY SEÇ"
+            android:visibility="invisible" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textView_selected_date_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textView_selected_date_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+
+            android:gravity="start"
+            android:paddingLeft="20dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
@@ -99,5 +157,12 @@
         android:layout_height="match_parent">
 
     </android.support.v4.view.ViewPager>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark" />
+
 
 </LinearLayout>

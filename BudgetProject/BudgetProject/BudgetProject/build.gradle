@@ -6,7 +6,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha5'
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha6'
         classpath "io.realm:realm-gradle-plugin:1.1.0"
 
 
@@ -19,7 +19,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
+
 }
 
 task clean(type: Delete) {

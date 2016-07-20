@@ -22,7 +22,7 @@ android {
 
 }
 
-
+""
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:design:24.0.0'
@@ -35,5 +35,7 @@ dependencies {
     compile 'com.github.blackfizz:eazegraph:1.2.0@aar'
     compile 'info.hoang8f:android-segmented:1.0.6'
     compile 'com.jakewharton:butterknife:8.2.1'
+    compile 'com.github.lguipeng:AnimCheckBox:1.0.0'
+    compile 'com.jaredrummler:material-spinner:1.0.9'
     testCompile 'junit:junit:4.12'
 }
